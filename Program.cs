@@ -10,7 +10,6 @@ namespace Lab2
         {
             Console.OutputEncoding = Encoding.UTF8;
 
-            // Демонстрація методів класу Book (варіант 2)
             Book book = SampleData.CreateBooks()[0];
             Console.WriteLine("################ Клас Book ################");
             Console.WriteLine(book.GetInfo());
