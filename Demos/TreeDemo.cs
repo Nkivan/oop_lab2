@@ -6,10 +6,10 @@ using Lab2.Trees;
 
 namespace Lab2.Demos
 {
-    /// <summary>Завдання 3 (узагальнене бінарне дерево) і завдання 4 (порівняння, сортування, ітератор).</summary>
+    
     public static class TreeDemo
     {
-        // ======================= ЗАВДАННЯ 3 =======================
+    
         public static void RunTask3()
         {
             Console.WriteLine("################ ЗАВДАННЯ 3: узагальнене бінарне дерево ################");
@@ -38,7 +38,7 @@ namespace Lab2.Demos
             Console.WriteLine();
         }
 
-        // ======================= ЗАВДАННЯ 4 =======================
+        
         public static void RunTask4()
         {
             Console.WriteLine("################ ЗАВДАННЯ 4: порівняння та власний ітератор ################");
@@ -54,18 +54,18 @@ namespace Lab2.Demos
             Console.WriteLine("--- Сортування через IComparable<T> / IComparer<T> ---");
 
             List<Book> list = new List<Book>(books);
-            list.Sort();                                              // IComparable<Book>: за серійним номером
+            list.Sort();                                            
             Console.WriteLine($"List.Sort()                  (IComparable<Book>, за №):      {Serials(list)}");
 
-            list.Sort(new BookTitleComparer());                       // IComparer<Book>: за назвою
+            list.Sort(new BookTitleComparer());                     
             Console.WriteLine($"List.Sort(BookTitleComparer) (IComparer<Book>, за назвою):   {Titles(list)}");
 
             Book[] array = (Book[])books.Clone();
-            Array.Sort(array, new BookPriceComparer());               // IComparer<Book>: за ціною
+            Array.Sort(array, new BookPriceComparer());             
             Console.WriteLine($"Array.Sort(BookPriceComparer) (IComparer<Book>, за ціною):   {Prices(array)}");
 
             ArrayList arrayList = new ArrayList(books);
-            arrayList.Sort();                                         // негенеричний IComparable
+            arrayList.Sort();                                      
             Console.WriteLine($"ArrayList.Sort()             (IComparable, за №):            " +
                               $"{string.Join(", ", arrayList.Cast<Book>().Select(b => b.SerialNumber))}");
             Console.WriteLine();
@@ -75,7 +75,7 @@ namespace Lab2.Demos
         {
             Console.WriteLine("--- SortedBinaryTree<Book>: дерево з порівнянням ---");
 
-            SortedBinaryTree<Book> byNumber = new SortedBinaryTree<Book>();           // IComparable<Book>
+            SortedBinaryTree<Book> byNumber = new SortedBinaryTree<Book>();         
             SortedBinaryTree<Book> byTitle = new SortedBinaryTree<Book>(new BookTitleComparer());
             SortedBinaryTree<Book> byPrice = new SortedBinaryTree<Book>(new BookPriceComparer());
             foreach (Book b in books)
