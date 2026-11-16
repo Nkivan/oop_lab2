@@ -60,25 +60,6 @@
 - `SortedBinaryTree<T>` не додає елементи, для яких порівняння дає 0 (дублікати). Якщо передано тип без `IComparable` і без `IComparer<T>`, конструктор повідомляє про помилку.
 - `Book` реалізує і узагальнений, і звичайний `IComparable`, щоб працював `ArrayList.Sort()`.
 
-## Запуск
-
-З кореня проєкту:
-
-```
-dotnet run --project Lab2.csproj
-```
-
-Або відкрити `Lab2.sln` у Visual Studio і запустити (F5).
-
-Ключові рядки очікуваного результату:
-
-```
-Зворотний (postorder): №210, №102, №407, №305
-List.Sort()                  (IComparable<Book>, за №):      №102, №210, №305, №407
-List.Sort(BookTitleComparer) (IComparer<Book>, за назвою):   Захар Беркут, Кобзар, Лісова пісня, Тіні забутих предків
-Array.Sort(BookPriceComparer) (IComparer<Book>, за ціною):   150.00, 180.50, 200.00, 250.00
-Збігається з рекурсивним PostOrder(): True
-```
 
 ## Контрольні запитання
 
