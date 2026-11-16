@@ -4,15 +4,12 @@ using System.Collections.Generic;
 
 namespace Lab2.Trees
 {
-    /// <summary>
-    /// Власний ітератор (IEnumerator&lt;T&gt;) зворотного обходу без рекурсії та без yield:
-    /// стан обходу зберігається у стеку, MoveNext() рухає обхід на один елемент.
-    /// </summary>
+    
     public class PostOrderEnumerator<T> : IEnumerator<T> where T : class
     {
         private readonly BinaryTree<T> _tree;
         private readonly Stack<TreeNode<T>> _stack = new Stack<TreeNode<T>>();
-        private TreeNode<T> _node;      // піддерево, у яке ще треба спуститися
+        private TreeNode<T> _node;     
         private TreeNode<T> _lastVisited;
         private T _current;
         private bool _started;
@@ -49,7 +46,7 @@ namespace Lab2.Trees
             {
                 TreeNode<T> top = _stack.Peek();
 
-                // Якщо є непройдене праве піддерево — спускаємося в нього
+    
                 if (top.Right != null && _lastVisited != top.Right)
                 {
                     _node = top.Right;
@@ -57,7 +54,6 @@ namespace Lab2.Trees
                     continue;
                 }
 
-                // Обидва піддерева пройдені — «відвідуємо» вузол
                 _stack.Pop();
                 _lastVisited = top;
                 _current = top.Value;
