@@ -3,7 +3,6 @@ using System.Collections;
 
 namespace Lab2
 {
-    /// <summary>Книга (клас, а не структура: за умовою елементами дерева структури бути не можуть).</summary>
     public class Book : IComparable<Book>, IComparable, IEquatable<Book>
     {
         public int SerialNumber { get; }
@@ -28,31 +27,25 @@ namespace Lab2
             Copies = copies;
         }
 
-        /// <summary>Збільшення вартості примірника на певний відсоток.</summary>
         public void IncreasePrice(decimal percent)
         {
             if (percent <= -100) throw new ArgumentException("Відсоток має бути більшим за -100.", nameof(percent));
             PricePerCopy = Math.Round(PricePerCopy * (1 + percent / 100m), 2);
         }
 
-        /// <summary>Загальна вартість тиражу.</summary>
         public decimal TotalCost() => PricePerCopy * Copies;
 
-        /// <summary>Інформація про книгу.</summary>
         public string GetInfo()
             => $"№{SerialNumber}: «{Title}», {PublicationYear} р., {PricePerCopy:F2} грн × {Copies} = {TotalCost():F2} грн";
 
         public override string ToString() => GetInfo();
 
-        // Рівність за серійним номером: на цьому працюють Contains/Remove/IndexOf у колекціях і масивах.
         public bool Equals(Book other) => other != null && SerialNumber == other.SerialNumber;
         public override bool Equals(object obj) => Equals(obj as Book);
         public override int GetHashCode() => SerialNumber.GetHashCode();
 
-        // Природний порядок — за серійним номером.
         public int CompareTo(Book other) => other == null ? 1 : SerialNumber.CompareTo(other.SerialNumber);
 
-        // Негенеричний IComparable потрібен, наприклад, для ArrayList.Sort().
         int IComparable.CompareTo(object obj)
         {
             if (obj == null) return 1;
