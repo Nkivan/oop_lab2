@@ -4,16 +4,12 @@ using System.Collections.Generic;
 
 namespace Lab2.Trees
 {
-    /// <summary>
-    /// Узагальнене бінарне дерево (завдання 3).
-    /// Обмеження where T : class забороняє структури (значущі типи) як елементи дерева.
-    /// Add додає елемент у перше вільне місце по рівнях (повне бінарне дерево).
-    /// </summary>
+    
     public class BinaryTree<T> : IEnumerable<T> where T : class
     {
         protected internal TreeNode<T> Root { get; protected set; }
 
-        /// <summary>Лічильник змін: ітератор за ним помічає зміну дерева під час обходу.</summary>
+    
         protected internal int Version { get; protected set; }
 
         public int Count { get; protected set; }
@@ -45,7 +41,7 @@ namespace Lab2.Trees
             return true;
         }
 
-        /// <summary>Пошук за Equals (дерево не впорядковане, тому обхід усіх вузлів).</summary>
+        
         public virtual bool Contains(T item)
         {
             foreach (T value in PreOrder())
@@ -58,15 +54,12 @@ namespace Lab2.Trees
         private static int Height(TreeNode<T> node)
             => node == null ? 0 : 1 + Math.Max(Height(node.Left), Height(node.Right));
 
-        // ---- Рекурсивні обходи (для порівняння з власним ітератором) ----
-
-        /// <summary>Прямий: корінь, ліве, праве.</summary>
+        
         public IEnumerable<T> PreOrder() => PreOrder(Root);
 
-        /// <summary>Центрований: ліве, корінь, праве.</summary>
+        
         public IEnumerable<T> InOrder() => InOrder(Root);
 
-        /// <summary>Зворотний: ліве, праве, корінь.</summary>
         public IEnumerable<T> PostOrder() => PostOrder(Root);
 
         private static IEnumerable<T> PreOrder(TreeNode<T> node)
@@ -93,7 +86,6 @@ namespace Lab2.Trees
             yield return node.Value;
         }
 
-        // ---- Власний ітератор: foreach обходить дерево у зворотному порядку (варіант 2) ----
 
         public IEnumerator<T> GetEnumerator() => new PostOrderEnumerator<T>(this);
 
