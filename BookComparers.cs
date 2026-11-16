@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Lab2
 {
-    /// <summary>Порівняння за назвою.</summary>
     public class BookTitleComparer : IComparer<Book>
     {
         public int Compare(Book x, Book y)
@@ -15,7 +14,6 @@ namespace Lab2
         }
     }
 
-    /// <summary>Порівняння за вартістю примірника.</summary>
     public class BookPriceComparer : IComparer<Book>
     {
         public int Compare(Book x, Book y)
