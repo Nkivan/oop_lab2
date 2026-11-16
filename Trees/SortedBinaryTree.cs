@@ -3,12 +3,7 @@ using System.Collections.Generic;
 
 namespace Lab2.Trees
 {
-    /// <summary>
-    /// Бінарне дерево з операцією порівняння (завдання 4): елементи розташовуються за правилом
-    /// «менші — ліворуч, більші — праворуч». Порівняння — через IComparer&lt;T&gt;
-    /// або (якщо його не передано) через IComparable&lt;T&gt; самого елемента.
-    /// Центрований обхід (InOrder) повертає елементи у відсортованому порядку.
-    /// </summary>
+    
     public class SortedBinaryTree<T> : BinaryTree<T> where T : class
     {
         private readonly IComparer<T> _comparer;
@@ -27,7 +22,6 @@ namespace Lab2.Trees
             _comparer = comparer ?? Comparer<T>.Default;
         }
 
-        /// <summary>Додає елемент на своє місце. Дублікати (Compare == 0) не додаються.</summary>
         public override bool Add(T item)
         {
             if (item == null) throw new ArgumentNullException(nameof(item));
@@ -61,7 +55,6 @@ namespace Lab2.Trees
             return true;
         }
 
-        /// <summary>Двійковий пошук: O(висота дерева).</summary>
         public override bool Contains(T item)
         {
             if (item == null) return false;
@@ -75,7 +68,6 @@ namespace Lab2.Trees
             return false;
         }
 
-        /// <summary>Елементи у відсортованому порядку (за використаним порівнянням).</summary>
         public IEnumerable<T> Sorted() => InOrder();
     }
 }
